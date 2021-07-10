@@ -1,5 +1,5 @@
 
-export function getAppointmentsForDay(state, day) {
+export default function getAppointmentsForDay(state, day) {
   let result = [];
 
   if(state.days.length === 0) {
@@ -7,9 +7,8 @@ export function getAppointmentsForDay(state, day) {
   } 
 
   const dayInfo = state.days.find((d) => {
-    if(d.name === day){
+    if(d.name === day)
       return d.appointments;
-    } 
   });
 
     dayInfo && dayInfo.appointments.map((appt) => {
