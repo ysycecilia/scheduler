@@ -19,31 +19,29 @@ function getAppointmentsForDay(state, day) {
 };
 
 function getInterviewersForDay(state, day) {
-  let result = [];
-
-  if(state.days.length === 0) {
-    return result;
-  } 
-
-  const dayInfo = state.days.find((d) => {
-    if(d.name === day)
-      return d.interviewers;
-  });
-
-    dayInfo && dayInfo.interviewers.map((appt) => {
-    result.push(state.interviewers[appt]);
-  })
-
-  return result;
+  const interviewers = [];
+  const days = state.days.filter(dayX => dayX.name === day);
+  const interviewersDay = days[0].interviewers;
+  for (const interview in state.interviewers) {
+    if (interviewersDay.includes(state.interviewers[interview].id)) {
+      interviewers.push(state.interviewers[interview]);
+    }
+  }
+  return interviewers;
 };
 
 function getInterview(state, interview){
 
   if(interview){
-    const interviewers = Object.values(state.interviewers);
-    interview.interviewer = interviewers[interview.interviewer-1];
+    const interviewer = state.interviewers[interview.interviewer];
+    const student = interview.student;
+    
+    const result = {
+    student,
+    interviewer
+    };
 
-    return interview;
+    return result;
   } else {
     return null;
   }
