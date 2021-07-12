@@ -15,7 +15,7 @@ export default function InterviewerListItem(props){
   return (
     <li className={interviewerClass}
         key={props.id}
-        onClick={() => props.setInterviewer(props.id)}>
+        onClick={props.setInterviewer}>
       <img
         className={imgClass}
         src={props.avatar}
