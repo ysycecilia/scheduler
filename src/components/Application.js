@@ -31,12 +31,13 @@ export default function Application(props){
     })
   }
 
-  function cancelInterview (id){
+  function cancelInterview (id, interview){
+    console.log(id)
     const appointment = {
       ...state.appointments[id],
       interview: null
     }
-
+    console.log(appointment)
     const appointments ={
       ...state.appointments,
       [id]: appointment
@@ -121,3 +122,4 @@ export default function Application(props){
     </main>
   );
 }
+
