@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios';
-
+import {getSpots} from 'helpers/selectors';
 export function useApplicationData() {
   const [state, setState] = useState({
     day: "Monday",
@@ -8,9 +8,9 @@ export function useApplicationData() {
     appointments: {},
     interviewers: {}
   });
-
+//when appointments.interview is not null, then booked
   const setDay = day => setState({ ...state, day });
-
+  
   function bookInterview(id, interview){
     const appointment = {
       ...state.appointments[id],
@@ -22,30 +22,74 @@ export function useApplicationData() {
       [id]: appointment
     };
 
+    const spotsRemaining = getSpots(appointments, state.days, state.day);
+    const currentDayIndex = state.days.findIndex(obj => obj.name === state.day);
+
+    const day = {
+      ...state.days[currentDayIndex],
+      spots: spotsRemaining
+    }
+
+    state.days[currentDayIndex] = day
+    const days = [
+      ...state.days,
+    ]
+    console.log(day)
+
+    // function findDay (){
+    //   return state.days.find((day) => day.name === state.day);
+    // }
+
+    // async function updateSpots() {
+      
+    //   let spots = 0;
+    //   let dayObj = await findDay();
+    //   console.log(dayObj)
+    //   dayObj.appointments.map((id) => {
+    //     if (!state.appointments[id].interview) 
+    //       spots++;
+    //   })
+    //   return spots;
+    // }
+
+    // const daysWithUpdatedSpots = state.days.map((day) => {
+    //   return day.name === state.day ? { ...day, spots } : day
+    // });
+
     return axios.put(`http://localhost:8001/api/appointments/${id}`, appointment).then(() => {
-      setState(prev => ({...prev, appointments}));
+      setState(prev => ({...prev, appointments, days}));
     })
+    
   }
 
   function cancelInterview (id, interview){
-    console.log(id)
     const appointment = {
       ...state.appointments[id],
       interview: null
     }
-    console.log(appointment)
+
     const appointments ={
       ...state.appointments,
       [id]: appointment
     }
 
+    const daysWithUpdatedSpots = state.days.map((day) => {
+      if(day.name === state.day){
+        day.spots++;
+        return day
+      }
+        else 
+      return day
+    });
+
     return axios.delete(`http://localhost:8001/api/appointments/${id}`).then(() => {
       console.log('Delete successful')
     setState(prev => ({...prev, appointments}));
-    
+    }).then(() => {
+      console.log(state);
+      setState(prev => ({...prev, daysWithUpdatedSpots}));
     })
   }
-
 
   useEffect(() => {
     const GET_DAYS = "http://localhost:8001/api/days";

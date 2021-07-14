@@ -6,7 +6,7 @@ function getAppointmentsForDay(state, day) {
     return result;
   } 
 
-  const dayInfo = state.days.find((d) => {
+  const dayInfo = state.days && state.days.find((d) => {
     if(d.name === day)
       return d.appointments;
   });
@@ -50,4 +50,17 @@ function getInterview(state, interview){
   }
 };
 
-export {getAppointmentsForDay, getInterviewersForDay, getInterview};
+   function getSpots(appointments, days, day) {
+      
+      let spots = 0;
+      let currentDay = days.find((cd) => cd.name === day);
+    
+      currentDay.appointments.map((id) => {
+        if (!appointments[id].interview) 
+          spots++;
+      })
+      console.log(spots)
+      return spots;
+    }
+
+export {getAppointmentsForDay, getInterviewersForDay, getInterview, getSpots};
