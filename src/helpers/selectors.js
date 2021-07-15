@@ -6,11 +6,7 @@ function getAppointmentsForDay(state, day) {
     return result;
   } 
 
-  const dayInfo = state.days && state.days.find((d) => {
-    if(d.name === day)
-      return d.appointments;
-  });
-
+  const dayInfo = state.days && state.days.find(d => d.name === day);
     dayInfo && dayInfo.appointments.map((appt) => {
     result.push(state.appointments[appt]);
   })
@@ -28,20 +24,13 @@ function getInterviewersForDay(state, day) {
       result.push(state.interviewers[itwer]);
     }
   })
-  // for (const interview in state.interviewers) {
-  //   if (interviewersDay.includes(state.interviewers[interview].id)) {
-  //     result.push(state.interviewers[interview]);
-  //   }
-  // }
   return result;
 };
 
 function getInterview(state, interview){
-
   if(interview){
     const interviewer = state.interviewers[interview.interviewer];
     const student = interview.student;
-    
     const result = { student, interviewer};
 
     return result;
@@ -51,15 +40,13 @@ function getInterview(state, interview){
 };
 
    function getSpots(appointments, days, day) {
-      
       let spots = 0;
-      let currentDay = days.find((cd) => cd.name === day);
+      let dayInfo = days.find((cd) => cd.name === day);
     
-      currentDay.appointments.map((id) => {
+      dayInfo.appointments.map((id) => {
         if (!appointments[id].interview) 
           spots++;
       })
-      console.log(spots)
       return spots;
     }
 
