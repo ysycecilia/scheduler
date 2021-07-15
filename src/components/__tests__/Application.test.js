@@ -1,15 +1,12 @@
 import React from "react";
 import axios from "../../__mocks__/axios";
-import { render, cleanup, waitForElement, fireEvent, prettyDOM,getAllByTestId, getByText, getByAltText,getByPlaceholderText, querySelectorAll, queryByText,waitForElementToBeRemoved, queryByAltText, wait } from "@testing-library/react";
+import { render, cleanup, waitForElement, fireEvent, prettyDOM,getAllByTestId, getByText, getByAltText,getByPlaceholderText, querySelectorAll, queryByText, queryByAltText } from "@testing-library/react";
 
 import Application from "components/Application";
 
 afterEach(cleanup);
 
 describe("Appointment", () => { 
-  // it.only("renders without crashing", () => {
-  //   render(<Application />);
-  // });
 
   it("defaults to Monday and changes the schedule when a new day is selected", async () => {
     const {getByText} = render(<Application />);
@@ -32,9 +29,10 @@ describe("Appointment", () => {
     fireEvent.change(getByPlaceholderText(appointment, /enter student name/i), {
       target: { value: "Lydia Miller-Jones"}
     });
+
     fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
     fireEvent.click(getByText(appointment, "Save"));
-    // debug();
+   
     expect(getByText(appointment, "Saving")).toBeInTheDocument();
 
     //getBy: if the element isn't found, then the getByText function will throw the error "Unable to find an element with the text: Lydia Miller-Jones" ---useful msg
@@ -52,7 +50,7 @@ describe("Appointment", () => {
 
   it("loads data, cancel an interview and increase the spots remaining for Monday by 1", async () => {
     // 1. Render the Application.
-    const { container, debug } = render(<Application />);
+    const { container } = render(<Application />);
   
     // 2. Wait until the text "Archie Cohen" is displayed.
     await waitForElement(() => getByText(container, "Archie Cohen"));
