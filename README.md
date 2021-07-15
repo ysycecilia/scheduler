@@ -1,5 +1,7 @@
 # Interview Scheduler
+Interview Scheduler is a single page application (SPA), built using React. Data persists on the API server using a PostgreSQL database. The client side talks with an API server over HTTP, using the JSON format. Both servers run concurrently. Requests are proxied from the Webpack development server to the API server.The whole project has been tested by Jest. 
 
+The tech stacks I have applied are APIs, Express, React, Axios, WebSockets, Storybook, Jest, and Cypress.
 
 ## Screenshot
 ### Main page: display with data fetched with Axios from Postgre database
