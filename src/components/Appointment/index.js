@@ -23,7 +23,7 @@ export default function Appointment(props){
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
-
+  //save newly created appointment with status mode 
   function save(name, interviewer){
     const interview = {
       student: name,
@@ -38,7 +38,6 @@ export default function Appointment(props){
     }).catch(() => {
       transition(ERROR_SAVE);
     })
-
   }
 
   function destroy(id){
@@ -65,6 +64,7 @@ export default function Appointment(props){
           onEdit={() => transition(EDIT)}
         />
       )}
+
       {mode === CREATE && (
         <Form 
           interviewers={props.interviewers}
@@ -73,6 +73,7 @@ export default function Appointment(props){
           onSave={save}
         />
       )}
+
       {mode === SAVING && (
         <Status  message="Saving"
         />
@@ -85,10 +86,12 @@ export default function Appointment(props){
         onConfirm={destroy}  
         />
       )}
+
       {mode === DELETING && (
         <Status  message="Deleting"
         />
       )}
+
       {mode === EDIT && (
         <Form 
           id={props.id}
