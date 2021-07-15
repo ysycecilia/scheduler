@@ -3,6 +3,15 @@ Interview Scheduler is a single page application (SPA), built using React. Data 
 
 The tech stacks I have applied are APIs, Express, React, Axios, WebSockets, Storybook, Jest, and Cypress.
 
+## production
+Client application has been deployed to Netlify.
+https://stoic-haibt-d05ef3.netlify.app/
+
+Api server has been deployed to Heroku.
+https://interview-scheduler-cecilia.herokuapp.com/api/days/
+https://interview-scheduler-cecilia.herokuapp.com/api/appointments/
+https://interview-scheduler-cecilia.herokuapp.com/api/interviewers/
+
 ## Screenshot
 ### Main page: display with data fetched with Axios from Postgre database
 !["main page"](https://github.com/ysycecilia/scheduler/blob/master/docs/main-page.png?raw=true)
