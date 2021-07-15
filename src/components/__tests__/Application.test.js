@@ -14,18 +14,13 @@ describe("Appointment", () => {
   it("defaults to Monday and changes the schedule when a new day is selected", async () => {
     const {getByText} = render(<Application />);
     
-    // return waitForElement(() => getByText("Monday")).then(() => {
-    //   fireEvent.click(getByText("Tuesday"));
-    //   expect(getByText("Leopold Silvers")).toBeInTheDocument();
-    // });
-
     await waitForElement(() => getByText("Monday"));
     fireEvent.click(getByText("Tuesday"));
     expect(getByText("Leopold Silvers")).toBeInTheDocument();
   });
 
   it("loads data, books an interview and reduces the spots remaining for the first day by 1", async() => {
-    const {container, debug} = render(<Application />);
+    const {container} = render(<Application />);
    
     await waitForElement(() => getByText(container,"Archie Cohen"));
     //prettyDOM(container);
@@ -80,7 +75,7 @@ describe("Appointment", () => {
     queryByText(day, "Monday")
   );
     expect(getByText(day, "2 spots remaining")).toBeInTheDocument();
-    // debug();
+ 
   });
 
   it("loads data, edits an interview and keeps the spots remaining for Monday the same", async () => {
