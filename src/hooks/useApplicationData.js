@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import {getSpots} from 'helpers/selectors';
+
 export function useApplicationData() {
   const [state, setState] = useState({
     day: "Monday",
@@ -8,20 +9,23 @@ export function useApplicationData() {
     appointments: {},
     interviewers: {}
   });
-//when appointments.interview is not null, then booked
+
   const setDay = day => setState({ ...state, day });
   
   function bookInterview(id, interview){
+    //store the new appointment
     const appointment = {
       ...state.appointments[id],
       interview: {...interview}
     };
 
+    //save the new one to original appointments 
     const appointments = {
       ...state.appointments,
       [id]: appointment
     };
 
+    //get current spots and update the day data
     const spots = getSpots(appointments, state.days, state.day);
     const currentDayIndex = state.days.findIndex(obj => obj.name === state.day);
 
@@ -30,6 +34,7 @@ export function useApplicationData() {
       spots
     }
 
+    //replace current day with updated spots data
     state.days[currentDayIndex] = day
     const days = [
       ...state.days,

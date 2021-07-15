@@ -6,7 +6,7 @@ export default function useVisualMode(initialMode) {
   
   //build a stack-structure(FIFO) mode history array 
   // add new mode: push to first
-  // go previous mode: pop the last (bottom is initial)
+  
   const [history, setHistory] = useState([initialMode]);
   
   function transition(mode, replace = false){
@@ -18,6 +18,8 @@ export default function useVisualMode(initialMode) {
     }
   };
 
+  //go previous mode: pop the last (
+  //bottom is the initial one, can't go further(undefined)
   function back(){
     if (history.length < 2) {
       setMode(initialMode);
