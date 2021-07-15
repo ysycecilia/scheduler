@@ -7,7 +7,7 @@ function getAppointmentsForDay(state, day) {
 
   //find selected day and then save new appointment to state
   const dayInfo = state.days && state.days.find(d => d.name === day);
-  dayInfo && dayInfo.appointments.map((appt) => {
+  dayInfo && dayInfo.appointments.forEach((appt) => {
     result.push(state.appointments[appt]);
   })
 
@@ -20,7 +20,7 @@ function getInterviewersForDay(state, day) {
  
   const interviewersDay = dayInfo[0].interviewers;
   
-  interviewersDay && interviewersDay.map((itwer) => {
+  interviewersDay && interviewersDay.forEach((itwer) => {
     if (interviewersDay.includes(state.interviewers[itwer].id)) {
       result.push(state.interviewers[itwer]);
     }
@@ -45,7 +45,7 @@ function getInterview(state, interview){
     let spots = 0;
     let dayInfo = days.find((cd) => cd.name === day);
   
-    dayInfo.appointments.map((id) => {
+    dayInfo.appointments.forEach((id) => {
       if (!appointments[id].interview) 
         spots++;
     })
