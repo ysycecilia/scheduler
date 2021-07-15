@@ -2,10 +2,19 @@
 
 
 ## Screenshot
+### Main page: display with data fetched with Axios from Postgre database
 !["main page"](https://github.com/ysycecilia/scheduler/blob/master/docs/main-page.png?raw=true)
+
+### Book a new appointment: take a name and a selected interviewer from listed ones
 !["book new"](https://github.com/ysycecilia/scheduler/blob/master/docs/book-new.png?raw=true)
+
+### Fill in info
 !["book input"](https://github.com/ysycecilia/scheduler/blob/master/docs/book-input.png?raw=true)
+
+### Save the appointment with updated remaining spots number
 !["book save"](https://github.com/ysycecilia/scheduler/blob/master/docs/book-save.png?raw=true)
+
+### Delete an existing appointment with with updated remaining spots number
 !["delete"](https://github.com/ysycecilia/scheduler/blob/master/docs/delete.png?raw=true)
 
 ## Setup
