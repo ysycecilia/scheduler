@@ -40,6 +40,7 @@ export function useApplicationData() {
       ...state.days,
     ]
 
+
     return axios.put(`http://localhost:8001/api/appointments/${id}`, appointment).then(() => {
       setState(prev => ({...prev, appointments, days}));
     })
@@ -75,9 +76,9 @@ export function useApplicationData() {
   }
 
   useEffect(() => {
-    const GET_DAYS = "http://localhost:8001/api/days";
-    const GET_APPOINTMENTS = "http://localhost:8001/api/appointments";
-    const GET_INTERVIEWERS = "http://localhost:8001/api/interviewers";
+    const GET_DAYS = "/api/days";
+    const GET_APPOINTMENTS = "/api/appointments";
+    const GET_INTERVIEWERS = "/api/interviewers";
     const daysURL = axios.get(GET_DAYS);
     const appointmentsURL = axios.get(GET_APPOINTMENTS);
     const interviewersURL = axios.get(GET_INTERVIEWERS);
