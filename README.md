@@ -5,7 +5,7 @@
 ### Main page: display with data fetched with Axios from Postgre database
 !["main page"](https://github.com/ysycecilia/scheduler/blob/master/docs/main-page.png?raw=true)
 
-### Book a new appointment: take a name and a selected interviewer from listed ones
+### Book a new appointment: take in a user's name and an interviewer selected from the list
 !["book new"](https://github.com/ysycecilia/scheduler/blob/master/docs/book-new.png?raw=true)
 
 ### Fill in info
