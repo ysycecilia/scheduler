@@ -41,7 +41,7 @@ export function useApplicationData() {
     ]
 
 
-    return axios.put(`http://localhost:8001/api/appointments/${id}`, appointment).then(() => {
+    return axios.put(`/api/appointments/${id}`, appointment).then(() => {
       setState(prev => ({...prev, appointments, days}));
     })
   }
@@ -70,7 +70,7 @@ export function useApplicationData() {
       ...state.days,
     ]
     
-    return axios.delete(`http://localhost:8001/api/appointments/${id}`,appointment).then(() => {
+    return axios.delete(`/api/appointments/${id}`,appointment).then(() => {
       setState(prev => ({...prev, appointments, days}));
     })
   }
