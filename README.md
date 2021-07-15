@@ -4,7 +4,7 @@ Interview Scheduler is a single page application (SPA), built using React. Data 
 The tech stacks I have applied are APIs, Express, React, Axios, WebSockets, Storybook, Jest, and Cypress.
 
 ## production
-Client application has been deployed to Netlify.
+Click here for live demo --- 
 https://stoic-haibt-d05ef3.netlify.app/
 
 Api server has been deployed to Heroku.
