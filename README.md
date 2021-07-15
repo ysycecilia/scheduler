@@ -7,9 +7,9 @@ The tech stacks I have applied are APIs, Express, React, Axios, WebSockets, Stor
 Click here for live demo --- 
 https://stoic-haibt-d05ef3.netlify.app/
 
-Api server has been deployed to Heroku.
-https://interview-scheduler-cecilia.herokuapp.com/api/days/
-https://interview-scheduler-cecilia.herokuapp.com/api/appointments/
+Api server has been deployed to Heroku. &nbsp;
+https://interview-scheduler-cecilia.herokuapp.com/api/days/ &nbsp;
+https://interview-scheduler-cecilia.herokuapp.com/api/appointments/ &nbsp;
 https://interview-scheduler-cecilia.herokuapp.com/api/interviewers/
 
 ## Screenshot
